@@ -6,10 +6,33 @@ import { Content03 } from "./component/Content03"
 import { Detail } from "./component/Detail"
 import { Footer } from "./component/Footer"
 import { Header } from "./component/Header"
+import styled from "styled-components"
 
 // import { Data } from "./data/data";
 
+const Wrap = styled.div`
+margin: 0;
+padding: 0;
+font-size: inherit; 
 
+
+`
+const List = styled.section`
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 100px 0;
+    figure{
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    img{
+        max-width: 100%;
+    }
+`
 export const App = () => {
     const [itm, setItm] = useState([]);
     const getItm = async () => {
@@ -22,12 +45,11 @@ export const App = () => {
     }, []);
 
     return (
-        <>
+        <Wrap>
             <Header />
-
             <Routes>
                 <Route path="/" element={
-                    <section>
+                    <List>
                         {
                             itm.slice(50, 60).map(it => {
                                 return (
@@ -40,7 +62,7 @@ export const App = () => {
                                 )
                             })
                         }
-                    </section>
+                    </List>
                 } />
                 <Route path="/01" element={<Content01 />} />
                 <Route path="/02" element={<Content02 />} />
@@ -48,6 +70,6 @@ export const App = () => {
                 <Route path="/detail/:id" element={<Detail itm={itm} />} />
             </Routes>
             <Footer />
-        </>
+        </Wrap>
     )
 }
