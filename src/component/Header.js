@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <header className="header">
             <h1>
-                <a href="/">LOGO</a>
+                <Link to="/">LOGO</Link>
             </h1>
             <nav>
                 <ul>
